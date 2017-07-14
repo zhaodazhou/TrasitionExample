@@ -25,7 +25,15 @@ class SwipeInteractiveTransition: UIPercentDrivenInteractiveTransition {
         
     }
     
-   
+   override var completionSpeed: CGFloat {
+        get {
+            let one : CGFloat = 1
+            return one - percentComplete
+        }
+        set {
+            super.completionSpeed = completionSpeed
+        }
+    }
     
     func handleGesture(sender : UIPanGestureRecognizer) -> Void {
         let translation = sender.translation(in: sender.view?.superview)
